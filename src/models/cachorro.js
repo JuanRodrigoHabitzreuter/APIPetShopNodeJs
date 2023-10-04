@@ -18,7 +18,6 @@ const Cachorro = conexao.define('cachorros', {
     cliente:{
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
 }, {
     createdAt: false,

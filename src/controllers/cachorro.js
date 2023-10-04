@@ -1,13 +1,13 @@
-const ServicoCliente = require("../services/cliente")
+const ServicoCachorro = require("../services/cachorro")
 
-const servico = new ServicoCliente()
+const servico = new ServicoCachorro()
 
-class ControllerCliente{
+class ControllerCachorro{
 
-    async Exclusivo(req, res){
+    async ChamarUm(req, res){
         try {
             console.log(req.params.id)
-            const result = await servico.Exclusivo(req.params.id)
+            const result = await servico.ChamarUm(req.params.id)
             res.status(200).json({
                 cliente: result
             })
@@ -17,9 +17,9 @@ class ControllerCliente{
         }
     }
     
-    async Sociedade(_, res){
+    async Matilha(_, res){
         try {
-            const result = await servico.Sociedade()
+            const result = await servico.Matilha()
             res.status(200).json({
                 clientes: result
             })
@@ -29,9 +29,9 @@ class ControllerCliente{
         }
     }
 
-    async Cadastrar(req, res){
+    async Inserir(req, res){
         try {
-            const result = await servico.Cadastrar(req.body.cliente)
+            const result = await servico.Inserir(req.body.cliente)
             res.status(201).json({
                 cliente: result
             })
@@ -41,9 +41,9 @@ class ControllerCliente{
         }
     }
 
-    async Atualizar(req, res){
+    async Modificar(req, res){
         try {
-            const result = await servico.Atualizar(req.params.id, req.body.cliente)
+            const result = await servico.Modificar(req.params.id, req.body.cliente)
             res.status(200).json({
                 cliente: result
             })
@@ -53,7 +53,7 @@ class ControllerCliente{
         }
     }
 
-    async Ocultar(req, res){
+    async Excluir(req, res){
         try {
             await servico.Delete(req.params.id)
             res.status(204)
@@ -65,4 +65,5 @@ class ControllerCliente{
 
 }
 
-module.exports = ControllerCliente
+module.exports = ControllerCachorro
+
