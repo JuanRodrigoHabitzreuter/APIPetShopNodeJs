@@ -2,29 +2,31 @@ const Cachorro = require('../models/cachorro.js')
 
 class RepositorieCachorro {
 
-    async ChamarUm(id) {
+    async ChamarUm(id, transaction) {
         return Cachorro.findOne({
-            where: { id }
+            where: { id },
+            transaction
         });
     }
-    
-    async Matilha() {
-        return Cachorro.findAll();
+
+    async Matilha(transaction) {
+        return Cachorro.findAll(transaction);
     }
 
-    async Inserir(cachorro) {
-        const result = await Cachorro.create(cachorro)
+    async Inserir(cachorro, transaction) {
+        const result = await Cachorro.create(cachorro, transaction)
 
         console.log(result)
 
         return result
     }
 
-    async Modificar(id, cachorro) {
+    async Modificar(id, cachorro, transaction) {
         const result = await Cachorro.Modificar(cachorro, {
             where: {
                 id
-            }
+            },
+            transaction
         })
 
         console.log(result)
@@ -32,9 +34,10 @@ class RepositorieCachorro {
         return result
     }
 
-    async Excluir(id) {
+    async Excluir(id, transaction) {
         return Cachorro.destroy({
-            where: { id }
+            where: { id },
+            transaction
         });
     }
 

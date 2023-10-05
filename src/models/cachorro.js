@@ -15,9 +15,14 @@ const Cachorro = conexao.define('cachorros', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    cliente:{
-        type: DataTypes.STRING,
+    clienteId: {
+        field: 'cliente_id',
+        type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+            model: 'Clientes',
+            key: 'id',
+        },
     },
 }, {
     createdAt: false,

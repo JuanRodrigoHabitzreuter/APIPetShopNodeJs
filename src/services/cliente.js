@@ -18,31 +18,31 @@ class ServicoCliente {
         return true
     }
 
-    async Exclusivo(id) {
-        return repositorio.PegarUm(id);
+    async Exclusivo(id, transaction) {
+        return repositorio.PegarUm(id, transaction);
     }
 
-    async Sociedade() {
-        return repositorio.Sociedade();
+    async Sociedade(transaction) {
+        return repositorio.Sociedade(transaction);
     }
 
-    async Cadastrar(cliente) {
-        this.VerficarCliente(cliente)
+    async Cadastrar(cliente, transaction) {
+        this.VerficarCliente(cliente, transaction)
 
-        return repositorio.Cadastrar(cliente);
+        return repositorio.Cadastrar(cliente, transaction);
     }
 
-    async Atualizar(id, cliente) {
+    async Atualizar(id, cliente, transaction) {
         if (!id) {
             throw new Error('Não foi enviada o identificador da cliente para alterar');
         }
         this.VerficarCliente(cliente)
 
-        return repositorio.Atualizar(id, cliente);
+        return repositorio.Atualizar(id, cliente, transaction);
     }
 
-    async Ocultar(id) {
-        return repositorio.Ocultar(id);
+    async Ocultar(id, transaction) {
+        return repositorio.Ocultar(id, transaction);
     }
 
 }

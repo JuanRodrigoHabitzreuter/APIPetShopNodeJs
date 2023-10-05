@@ -1,12 +1,14 @@
 const express = require('express')
 //apenas uma rota//
-const router = require('./src/routes/router.js')
+const routerCliente = require('./src/routes/cliente.js')
+const routerCachorro = require('./src/routes/cachorro.js')
 
 const app = express()
-const port = 3000
+const port = 3009
 
 app.use(express.json())
-app.use(router)
+app.use(routerCliente)
+app.use(routerCachorro)
 // app.use(retour)
 
 app.listen(port, () => {
