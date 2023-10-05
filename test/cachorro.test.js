@@ -1,10 +1,10 @@
 const { describe, expect, it } = require('@jest/globals')
 
 const ServicoCachorro = require("../src/services/cachorro")
+const conexao = require('../src/database')
 
 describe('Testes Cachorro', () => {
       
-      let save
 
       beforeAll(async () => {
          this.save = await conexao.transaction()

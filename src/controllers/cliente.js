@@ -2,9 +2,9 @@ const ServicoCliente = require("../services/cliente")
 
 const servico = new ServicoCliente()
 
-class ControllerCliente{
+class ControllerCliente {
 
-    async Exclusivo(req, res){
+    async Exclusivo(req, res) {
         try {
             console.log(req.params.id)
             const result = await servico.Exclusivo(req.params.id)
@@ -16,8 +16,8 @@ class ControllerCliente{
             res.status(500).json({ message: error })
         }
     }
-    
-    async Sociedade(_, res){
+
+    async Sociedade(_, res) {
         try {
             const result = await servico.Sociedade()
             res.status(200).json({
@@ -29,7 +29,7 @@ class ControllerCliente{
         }
     }
 
-    async Cadastrar(req, res){
+    async Cadastrar(req, res) {
         try {
             const result = await servico.Cadastrar(req.body.cliente)
             res.status(201).json({
@@ -41,7 +41,7 @@ class ControllerCliente{
         }
     }
 
-    async Atualizar(req, res){
+    async Atualizar(req, res) {
         try {
             const result = await servico.Atualizar(req.params.id, req.body.cliente)
             res.status(200).json({
@@ -53,7 +53,7 @@ class ControllerCliente{
         }
     }
 
-    async Ocultar(req, res){
+    async Ocultar(req, res) {
         try {
             await servico.Delete(req.params.id)
             res.status(204)
@@ -62,7 +62,6 @@ class ControllerCliente{
             res.status(500).json({ message: error })
         }
     }
-
 }
 
 module.exports = ControllerCliente

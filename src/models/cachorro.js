@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize')
 const conexao = require('../database.js')
+const Cliente = require('./cliente.js')
 
 const Cachorro = conexao.define('cachorros', {
     id: {
@@ -20,7 +21,7 @@ const Cachorro = conexao.define('cachorros', {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'Clientes',
+            model: Cliente,
             key: 'id',
         },
     },

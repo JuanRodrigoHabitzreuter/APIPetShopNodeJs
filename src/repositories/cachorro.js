@@ -10,11 +10,13 @@ class RepositorieCachorro {
     }
 
     async Matilha(transaction) {
-        return Cachorro.findAll(transaction);
+        return Cachorro.findAll({
+            transaction
+        });
     }
 
     async Inserir(cachorro, transaction) {
-        const result = await Cachorro.create(cachorro, transaction)
+        const result = await Cachorro.create(cachorro, {transaction})
 
         console.log(result)
 

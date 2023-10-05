@@ -6,13 +6,13 @@ class RepositorieCliente {
         return Cliente.findOne({
             where: { id },
             transaction,
-            include: 'Cachorros' 
+            include: ['cachorros'] 
 
         });
     }
 
     async Sociedade(transaction) {
-        return Cliente.findAll(transaction);
+        return Cliente.findAll( { transaction });
     }
 
     async Cadastrar(cliente, transaction) {
