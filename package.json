@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "test": "jest test/**/*.test.js",
-    "test:cov": "jest test/index.test.js --coverage"
+    "test:cov": "jest test/**/*.test.js --coverage"
   },
   "author": "",
   "license": "ISC",

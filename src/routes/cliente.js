@@ -11,6 +11,7 @@ router.get('/api/cliente/', controllerCliente.Sociedade)
 router.post('/api/cliente', controllerCliente.Cadastrar)
 router.put('/api/cliente/:id', controllerCliente.Atualizar)
 router.delete('/api/cliente/:id', controllerCliente.Ocultar)
+router.get('/api/cliente/:id', controllerCliente.Dono)
 
 module.exports = router
 

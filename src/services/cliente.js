@@ -19,7 +19,7 @@ class ServicoCliente {
     }
 
     async Exclusivo(id, transaction) {
-        return repositorio.PegarUm(id, transaction);
+        return repositorio.Exclusivo(id, transaction);
     }
 
     async Sociedade(transaction) {
@@ -45,6 +45,30 @@ class ServicoCliente {
         return repositorio.Ocultar(id, transaction);
     }
 
+    // async Exclusivo(id, transaction) {
+    //     return repositorio.Exclusivo(id, transaction);
+    // }
+    async Dono(clienteId, transaction) {
+        try {
+            // Buscar o cliente pelo ID
+            const cliente = await Cliente.findByPk(clienteId, transaction);
+
+            if (!cliente) {
+                throw new Error('Cliente não encontrado.');
+            }
+
+            // Buscar os cachorros associados ao cliente
+            const cachorros = await Cachorro.findAll({
+                where: { clienteId: cliente.id },
+            });
+
+            return cachorros;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 module.exports = ServicoCliente
+

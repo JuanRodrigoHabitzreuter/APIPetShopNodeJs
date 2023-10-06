@@ -62,6 +62,26 @@ class ControllerCliente {
             res.status(500).json({ message: error })
         }
     }
+
+    async Dono(req, res) {
+        try {
+            console.log(req.params.id)
+            const result = await servico.Dono(req.params.id)
+            // const clienteId = req.params.id;
+            // console.log(`ID do cliente: ${clienteId}`);
+            
+            // Chama o serviço para buscar os cachorros do cliente pelo ID
+            const cachorros = await servico.Dono(clienteId);
+
+            res.status(200).json({
+                cachorros
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Erro ao buscar os cachorros do cliente." });
+        }
+    }
 }
 
 module.exports = ControllerCliente
+

@@ -4,7 +4,7 @@ const routerCliente = require('./src/routes/cliente.js')
 const routerCachorro = require('./src/routes/cachorro.js')
 
 const app = express()
-const port = 3009
+const port = 3000
 
 app.use(express.json())
 app.use(routerCliente)
