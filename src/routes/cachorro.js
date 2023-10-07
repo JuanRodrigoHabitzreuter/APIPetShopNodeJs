@@ -1,6 +1,6 @@
 const express = require('express')
 
-const ControllerCachorro = require( '../controllers/cachorro')
+const ControllerCachorro = require('../controllers/cachorro')
 
 const controllerCachorro = new ControllerCachorro()
 

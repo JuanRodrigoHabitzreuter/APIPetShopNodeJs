@@ -7,7 +7,6 @@ class RepositorieCliente {
             where: { id },
             transaction,
             include: ['cachorros']
-
         });
     }
 

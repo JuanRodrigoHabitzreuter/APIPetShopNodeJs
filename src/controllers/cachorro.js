@@ -2,9 +2,9 @@ const ServicoCachorro = require("../services/cachorro")
 
 const servico = new ServicoCachorro()
 
-class ControllerCachorro{
+class ControllerCachorro {
 
-    async ChamarUm(req, res){
+    async ChamarUm(req, res) {
         try {
             console.log(req.params.id)
             const result = await servico.ChamarUm(req.params.id)
@@ -16,8 +16,8 @@ class ControllerCachorro{
             res.status(500).json({ message: error })
         }
     }
-    
-    async Matilha(_, res){
+
+    async Matilha(_, res) {
         try {
             const result = await servico.Matilha()
             res.status(200).json({
@@ -29,7 +29,7 @@ class ControllerCachorro{
         }
     }
 
-    async Inserir(req, res){
+    async Inserir(req, res) {
         try {
             const result = await servico.Inserir(req.body.cliente)
             res.status(201).json({
@@ -41,7 +41,7 @@ class ControllerCachorro{
         }
     }
 
-    async Modificar(req, res){
+    async Modificar(req, res) {
         try {
             const result = await servico.Modificar(req.params.id, req.body.cliente)
             res.status(200).json({
@@ -53,7 +53,7 @@ class ControllerCachorro{
         }
     }
 
-    async Excluir(req, res){
+    async Excluir(req, res) {
         try {
             await servico.Delete(req.params.id)
             res.status(204)

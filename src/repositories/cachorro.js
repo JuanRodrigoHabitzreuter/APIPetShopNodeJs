@@ -16,7 +16,7 @@ class RepositorieCachorro {
     }
 
     async Inserir(cachorro, transaction) {
-        const result = await Cachorro.create(cachorro, {transaction})
+        const result = await Cachorro.create(cachorro, { transaction })
 
         console.log(result)
 

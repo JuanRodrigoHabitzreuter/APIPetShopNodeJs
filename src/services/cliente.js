@@ -9,12 +9,9 @@ class ServicoCliente {
             throw new Error('Não foi enviada a cliente para adicionar');
         } else if (!cliente.nome) {
             throw new Error('Não foi enviado o nome da cliente');
-        } else if (!cliente.email) {
-            throw new Error('Não foi enviado o email da cliente');
-        } else if (!cliente.senha) {
-            throw new Error('Não foi enviado o senha da cliente');
+        } else if (!cliente.telefone) {
+            throw new Error('Não foi enviado o telefone da cliente');
         }
-
         return true
     }
 
@@ -49,23 +46,24 @@ class ServicoCliente {
     //     return repositorio.Exclusivo(id, transaction);
     // }
     async Dono(clienteId, transaction) {
-        try {
-            // Buscar o cliente pelo ID
-            const cliente = await Cliente.findByPk(clienteId, transaction);
+        return repositorio.Dono(clienteId, transaction)
+        // try {
+        //     // Buscar o cliente pelo ID
+        //     const cliente = await Cliente.findByPk(clienteId, transaction);
 
-            if (!cliente) {
-                throw new Error('Cliente não encontrado.');
-            }
+        //     if (!cliente) {
+        //         throw new Error('Cliente não encontrado.');
+        //     }
 
-            // Buscar os cachorros associados ao cliente
-            const cachorros = await Cachorro.findAll({
-                where: { clienteId: cliente.id },
-            });
+        //     // Buscar os cachorros associados ao cliente
+        //     const cachorros = await Cachorro.findAll({
+        //         where: { clienteId: cliente.id },
+        //     });
 
-            return cachorros;
-        } catch (error) {
-            throw error;
-        }
+        //     return cachorros;
+        // } catch (error) {
+        //     throw error;
+        // }
     }
 
 }
