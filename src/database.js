@@ -2,8 +2,9 @@ const { Sequelize } = require('sequelize')
 const { development } = require('./config')
 
 const conexao = new Sequelize(development)
-conexao.sync()
-// conexao.sync({force =true})
+
+// conexao.sync()
+conexao.sync({force: true})
     .then(() => {
         console.log('Conectado ao banco com sucesso!')
     })

@@ -1,4 +1,4 @@
-const ServicoAtendimento = require("../services/atendimento")
+const ServicoAtendimento = require("../services/atendimentoservice")
 
 const servico = new ServicoAtendimento()
 
@@ -32,9 +32,9 @@ class ControllerAtendimento {
     async Agenda(req, res) {
         try {
             const result = await servico.Agenda(req.body.Atendimento)
-            res.status(201).json({
-                Atendimento: result
-            })
+            res.status(201).json({ message: 'Agenda criado com sucesso' })
+            Atendimento: result
+
         } catch (error) {
             console.log(error)
             res.status(500).json({ message: error })
@@ -44,9 +44,9 @@ class ControllerAtendimento {
     async Remarcar(req, res) {
         try {
             const result = await servico.Remarcar(req.params.id, req.body.Atendimento)
-            res.status(200).json({
-                Atendimento: result
-            })
+            res.status(200).json({ message: 'Atendimento atualizado com sucesso' })
+            Atendimento: result
+
         } catch (error) {
             console.log(error)
             res.status(500).json({ message: error })
@@ -56,7 +56,7 @@ class ControllerAtendimento {
     async Deletar(req, res) {
         try {
             await servico.Delete(req.params.id)
-            res.status(204)
+            res.status(204).json({ message: 'Atendimento deletado com sucesso' })
         } catch (error) {
             console.log(error)
             res.status(500).json({ message: error })
@@ -71,7 +71,7 @@ class ControllerAtendimento {
             // console.log(`ID do Atendimento: ${AtendimentoId}`);
 
             // Chama o serviço para buscar os cachorros do Atendimento pelo ID
-            const cachorros = await servico.Dono(AtendimentoId);
+            //    const cachorros = await servico.Dono(AtendimentoId);
 
             res.status(200).json({
                 cachorros
@@ -81,7 +81,22 @@ class ControllerAtendimento {
             res.status(500).json({ message: "Erro ao buscar os cachorros do Atendimento." });
         }
     }
+    async getAtendimentosByCachorroId(req, res) {
+        try {
+
+            const id = req.params.id
+            const atendimentos = await service.GetAtendimentosByCachorroId(id)
+
+            res.status(200).json(atendimentos)
+
+        } catch (err) {
+            res.status(500).json({ message: err.message })
+        }
+    }
+
+
 }
 
 module.exports = ControllerAtendimento
+
 

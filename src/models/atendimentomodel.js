@@ -1,12 +1,12 @@
 const { DataTypes } = require('sequelize')
 const conexao = require('../database.js')
-const Cachorro = require('./cachorro.js');
+const Cachorro = require('./cachorromodel.js');
 
 const Atendimento = conexao.define('atendimentos', {
     id: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        type: DataTypes.INTEGER
     },
     data: {
         type: DataTypes.DATE,
@@ -20,6 +20,7 @@ const Atendimento = conexao.define('atendimentos', {
     },
     valor: {
         type: DataTypes.DOUBLE,
+        allowNull: false,
     },
     concluido: {
         type: DataTypes.BOOLEAN,
@@ -39,7 +40,8 @@ const Atendimento = conexao.define('atendimentos', {
     updatedAt: false
 })
 
-Cachorro.belongsTo(Atendimento, { foreignKey: 'cachorroId' });
-Atendimento.hasMany(Cachorro, { foreignKey: 'cachorroId' });
+Cachorro.hasMany(Atendimento, { foreignKey: 'cachorroId' });
+Atendimento.belongsTo(Cachorro, { foreignKey: 'cachorroId' });
 
+module.exports = Atendimento
 

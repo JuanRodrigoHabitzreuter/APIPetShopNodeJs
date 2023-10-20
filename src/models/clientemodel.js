@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize')
 const conexao = require('../database.js')
-const Cachorro = require('./cachorro');
 
 const Cliente = conexao.define('clientes', {
     id: {
@@ -9,19 +8,21 @@ const Cliente = conexao.define('clientes', {
         type: DataTypes.INTEGER
     },
     nome: {
+        field: 'nome',
         type: DataTypes.STRING,
         allowNull: false
     },
     telefone: {
+        field: 'telefone',
         type: DataTypes.STRING,
         unique: true, // Essa opção garante unicidade
+        allowNull: false,
     },
+
 
 }, {
     createdAt: false,
     updatedAt: false
 })
 
-Cachorro.belongsTo(Cliente, { foreignKey: 'clienteId' });
-Cliente.hasMany(Cachorro, { foreignKey: 'clienteId' });
-
+module.exports = Cliente

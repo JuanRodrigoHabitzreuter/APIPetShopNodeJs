@@ -1,10 +1,11 @@
-const Cachorro = require('../models/cachorro.js')
+const Cachorro = require('../models/cachorromodel.js')
 
 class RepositorieCachorro {
 
     async ChamarUm(id, transaction) {
         return Cachorro.findOne({
             where: { id },
+            include: 'cliente',
             transaction
         });
     }
@@ -46,3 +47,5 @@ class RepositorieCachorro {
 }
 
 module.exports = RepositorieCachorro
+
+

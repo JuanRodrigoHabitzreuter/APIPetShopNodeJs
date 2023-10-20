@@ -1,12 +1,12 @@
-const Atendimento = require('../models/atendimento.js')
 
+const Atendimento = require('../models/atendimentomodel.js')
 class RepositorieAtendimento {
 
     async Consulta(id, transaction) {
         return Atendimento.findOne({
             where: { id },
             transaction,
-            include: ['cachorros']
+            include: 'cachorro'
 
         });
     }
@@ -62,6 +62,16 @@ class RepositorieAtendimento {
             throw error;
         }
     }
-}
 
+
+    async getAtendimentosByCachorroId(id) {
+        return await Atendimento.findAll({
+            where: { id_cachorro: id }
+        })
+
+
+    }
+}
 module.exports = RepositorieAtendimento
+
+

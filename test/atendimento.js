@@ -1,13 +1,13 @@
 const { describe, expect, it } = require('@jest/globals')
 
-const ServicoAtendimento = require("../src/services/atendimento")
-const conexao = require('../src/database')
+const ServicoAtendimento = require("../src/services/atendimentoservice")
+const db = require('../src/database')
 
 describe('Testes Atendimento', () => {
 
 
    beforeAll(async () => {
-      this.save = await conexao.transaction()
+      this.save = await db.transaction()
    })
    afterAll(async () => {
       this.save.rollback()

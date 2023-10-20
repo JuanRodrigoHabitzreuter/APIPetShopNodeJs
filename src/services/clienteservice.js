@@ -1,4 +1,4 @@
-const RepositorieCliente = require("../repositories/cliente");
+const RepositorieCliente = require("../repositories/clienterepositorie");
 
 const repositorio = new RepositorieCliente()
 
@@ -16,8 +16,14 @@ class ServicoCliente {
     }
 
     async Exclusivo(id, transaction) {
-        return repositorio.Exclusivo(id, transaction);
+        console.log('enviando para o repositorio')
+        return repositorio.Exclusivo(id, transaction);        
     }
+
+    async PegarUmPorEmail(email) {
+        return repositorio.PegarUmPorEmail(email);
+    }
+
 
     async Sociedade(transaction) {
         return repositorio.Sociedade(transaction);
@@ -42,11 +48,9 @@ class ServicoCliente {
         return repositorio.Ocultar(id, transaction);
     }
 
-    // async Exclusivo(id, transaction) {
-    //     return repositorio.Exclusivo(id, transaction);
-    // }
-    async Dono(clienteId, transaction) {
-        return repositorio.Dono(clienteId, transaction)
+   
+    // async Dono(clienteId, transaction) {
+    //     return repositorio.Dono(clienteId, transaction)
         // try {
         //     // Buscar o cliente pelo ID
         //     const cliente = await Cliente.findByPk(clienteId, transaction);
@@ -64,7 +68,7 @@ class ServicoCliente {
         // } catch (error) {
         //     throw error;
         // }
-    }
+    
 
 }
 
