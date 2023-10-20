@@ -8,5 +8,6 @@ module.exports = {
         host: process.env.DB_HOST,
         dialect: process.env.DB_DIALECT
     },
-    secret: 'minhachavesecreta'
+    secret: process.env.DB_SECRET
+    // secret: 'minhachavesecreta'
 }
